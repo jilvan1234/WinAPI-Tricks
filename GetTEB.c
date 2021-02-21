@@ -1,0 +1,14 @@
+#include <windows.h>
+#include "TEB.h"
+
+INT main(VOID)
+{
+#if defined(_WIN64)
+	//64bit
+	PTEB Teb = (PTEB)__readgsqword(0x30);
+#elif define(_WIN32)
+	//32bit
+	PTEB Teb = (PTEB)__readfsdword(0x18);
+#endif
+	return ERROR_SUCCESS;
+}
